@@ -1,0 +1,26 @@
+.wrapperList {
+  display: flex;
+  justify-content: center;
+}
+
+.listItem {
+  list-style: none;
+  padding: 10px 11px;
+}
+
+.listItem:not(:last-child) {
+  border-bottom: 1px solid rgb(213, 210, 210);
+}
+
+.list {
+  padding: 0 20px;
+  margin-bottom: 0;
+}
+
+.checkBox {
+  display: flex;
+}
+
+.text {
+  font-size: 18px;
+}

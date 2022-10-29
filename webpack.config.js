@@ -9,7 +9,7 @@ const isProduction = process.env.NODE_ENV === 'production'
 module.exports = {
   entry: path.resolve(__dirname, 'src'),
   resolve: {
-    extensions: ['.ts', '.tsx', '.js'],
+    extensions: ['.ts', '.tsx', '.js', '.css'],
   },
   mode: isProduction ? 'production' : 'development',
   module: {
@@ -61,7 +61,7 @@ module.exports = {
     new ReactRefreshWebpackPlugin({}),
   ],
   devServer: {
-    hot: isProduction ? false : true,
+    port: 3000,
   },
   devtool: isProduction ? false : 'source-map',
 }
