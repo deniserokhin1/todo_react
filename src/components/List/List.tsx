@@ -1,37 +1,31 @@
-import { Checkbox } from 'antd'
-import type { CheckboxChangeEvent } from 'antd/es/checkbox'
-import React, { FC } from 'react'
-import cl from './List.module.css'
+import React, { FC, useEffect } from 'react'
+import { useActions } from '../../hooks/useActions'
+import { useTypedSelector } from '../../hooks/useTypedSelector'
+import ListItem from './ListItem'
 
 const List: FC = () => {
-  const onChange = (e: CheckboxChangeEvent) => {
-    console.log(`checked = ${e.target.checked}`)
-  }
+  const { tasks } = useTypedSelector((state) => state.todo)
+  const { loadAllTodos, loadAllIds } = useActions()
+
+  const { active, all, completed } = useTypedSelector((state) => state.status)
+
+  useEffect(() => {
+    const todos = JSON.parse(localStorage.getItem('todos'))
+    const id = JSON.parse(localStorage.getItem('id'))
+    if (todos && id) {
+      loadAllTodos(todos)
+      loadAllIds(id)
+    }
+  }, [])
+
+  const completedTask = tasks.filter((task) => task.completed === true)
+  const activeTask = tasks.filter((task) => task.completed === false)
 
   return (
     <div>
-      <ul className={cl.list}>
-        <li className={cl.listItem}>
-          <Checkbox className={cl.text} onChange={onChange}>
-            Task1
-          </Checkbox>
-        </li>
-        <li className={cl.listItem}>
-          <Checkbox className={cl.text} onChange={onChange}>
-            Task1
-          </Checkbox>
-        </li>
-        <li className={cl.listItem}>
-          <Checkbox className={cl.text} onChange={onChange}>
-            Task1
-          </Checkbox>
-        </li>
-        <li className={cl.listItem}>
-          <Checkbox className={cl.text} onChange={onChange}>
-            Task1
-          </Checkbox>
-        </li>
-      </ul>
+      {completed && <ListItem arr={completedTask} />}
+      {active && <ListItem arr={activeTask} />}
+      {all && <ListItem arr={tasks} />}
     </div>
   )
 }

@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "webpack-dev-server --open",
+    "i": "webpack-dev-server --open",
     "build": "NODE_ENV=production webpack",
     "lint": "eslint --fix \"./src/**/*.{js,jsx,ts,tsx,json}\"",
     "format": "prettier --write \"./src/**/*.{js,jsx,ts,tsx,json,css,scss,md}\"",
@@ -23,7 +24,6 @@
   },
   "homepage": "https://github.com/deniserokhin1/todo_react#readme",
   "dependencies": {
-    "@types/react-redux": "^7.1.24",
     "antd": "^4.23.6",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -41,9 +41,11 @@
     "@reduxjs/toolkit": "^1.8.6",
     "@types/antd": "^1.0.0",
     "@types/css": "^0.0.33",
+    "@types/node": "^18.11.7",
     "@types/react": "^18.0.24",
     "@types/react-css-modules": "^4.6.4",
     "@types/react-dom": "^18.0.8",
+    "@types/react-redux": "^7.1.24",
     "@types/styled-components": "^5.1.26",
     "@typescript-eslint/eslint-plugin": "^5.41.0",
     "@typescript-eslint/parser": "^5.41.0",
